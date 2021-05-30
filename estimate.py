@@ -12,8 +12,8 @@ def monte_carlo(n):
     in_circle = 0
     in_square = 0
     for i in range (n):
-        x = random.randint(-1,1)
-        y = random.randint(-1,1)
+        x = random.uniform(-1,1)
+        y = random.uniform(-1,1)
         dist = math.sqrt(x*x + y*y)
         if dist <= 1:
             in_circle += 1
