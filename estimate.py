@@ -2,6 +2,26 @@ import math
 import unittest
 import random
 
+def wallis(n):
+   pie = 1
+   for i in range (1, n+1):
+        pie *= (4*i*i)/(4*i*i - 1)
+   return (pie*2)
+   
+def monte_carlo(n):
+    in_circle = 0
+    in_square = 0
+    for i in range (n):
+        x = random.randint(-1,1)
+        y = random.randint(-1,1)
+        dist = math.sqrt(x*x + y*y)
+        if dist <= 1:
+            in_circle += 1
+        in_square += 1
+    pie = 4 * (in_circle/in_square)
+    return (pie)
+    
+    
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
         for i in range(0, 5):
@@ -32,21 +52,4 @@ class TestMC(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
     
-def wallis(n):
-   pie = 1
-   for i in range (1, n):
-        pie *= (4*i*i)/(4*i*i - 1)
-   return (pie*2)
-   
-def monte_carlo(n):
-    in_circle = 0
-    in_square = 0
-    for i in range (1, n):
-        x = random.randint(0,1)
-        y = random.randint(0,1)
-        dist = math.sqrt(x*x + y*y)
-        if dist <= 1:
-            in_circle += 1
-        in_square += 1
-    pie = 4 * (in_circle/in_square)
-    return (pie)
+
